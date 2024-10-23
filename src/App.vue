@@ -11,6 +11,7 @@
         <th>Popularity</th>
         <th>Won<br> Oscar</th>
         <th>Won<br> Emmy</th>
+        <th>Delete Actor</th>
       </tr>
     </thead>
     <tbody>
@@ -39,12 +40,13 @@ let fiveContacts = ref([
   contacts[2],
   contacts[3],
   contacts[4],
-  contacts[5]]
+]
 )
 console.log(fiveContacts.value)
 // console.log(fiveContacts[0].pictureUrl.value)
 function addRandom(){
-  const randomIndex= Math.floor(Math.random()*contacts.length);
+  let remainingContacts = contacts.filter(contact => !fiveContacts.value.includes(contact));
+  const randomIndex= Math.floor(Math.random()*remainingContacts.length);
   fiveContacts.value.push(contacts[randomIndex])
 }
 function sortName(){
@@ -57,7 +59,7 @@ function sortPopularity(){
 }
 function deleteActor(idToRemove){
   console.log("deleting")
-  fiveContacts.value.filter(item => item.id !== idToRemove);
+  fiveContacts.value=fiveContacts.value.filter(item => item.id !== idToRemove);
 }
 </script>
 
